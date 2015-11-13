@@ -15,7 +15,7 @@ fi
 if [ ! -z "$VALUE" ]; then
   FINDINFILE=$(grep -e "^$KEY.*$" $TORRC)
 
-  echo "Adding $KEY $VALUE to Torrc"
+  # echo "Adding $KEY $VALUE to Torrc"
 
   # Append if missing.
   # Update if exist.

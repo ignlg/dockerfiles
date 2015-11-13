@@ -1,7 +1,0 @@
-SocksPort 0 # just a relay
-ORPort 9001
-Nickname hacktheplanet
-ContactInfo Anonymous
-AccountingStart month 1 00:01
-AccountingMax 100 GBytes
-BridgeRelay 1

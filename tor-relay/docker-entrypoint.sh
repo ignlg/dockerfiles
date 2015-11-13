@@ -1,5 +1,6 @@
 #!/bin/sh
 
+## Create custom config
 # Default communication port
 sh /update_or_add.sh 'ORPort' '9001' "$PORT"
 # Disable Socks connections
@@ -23,9 +24,16 @@ sh /update_or_add.sh 'DirPort' "$DIR_PORT"
 # Bridge relay
 if [ -z "$BRIDGE_RELAY" ] || [ "$BRIDGE_RELAY" -eq "0" ]; then
   # Reject all exits. Only relay.
-  sh /update_or_add.sh 'Exitpolicy' 'reject *:*' "$EXIT_POLICY"
+  sh /update_or_add.sh 'ExitPolicy' 'reject *:*' "$EXIT_POLICY"
 else
   sh /update_or_add.sh 'BridgeRelay' '1' "$BRIDGE_RELAY"
 fi
 # Private bridge
 sh /update_or_add.sh 'PublishServerDescriptor' "$PUBLISH_SERVER_DESCRIPTOR"
+
+cat /etc/tor/torrc.custom
+
+## Run tor
+exec tor "$@"
+
+exec "$@"
