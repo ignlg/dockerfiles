@@ -17,7 +17,6 @@ MAINTAINER Ignacio Lago <ignacio@ignaciolago.com>
 #   -e 'ACCOUNTING_MAX=100 GBytes' \
 #   -e 'BANDWIDTH_RATE=1 MBytes' \
 #   -e 'BANDWIDTH_BURST=2 MBytes' \
-#   -e 'ADVERTISED_BANDWIDTH=512 KBytes' \
 #   --name tor-relay \
 #   ignlg/tor-relay -f /etc/tor/torrc.custom
 #
@@ -27,8 +26,7 @@ VOLUME [ "/home/tor/.tor" ]
 
 # Install sed
 USER root
-RUN apk update && apk add \
-  sed \
+RUN apk update && apk add sed \
   && rm -rf /var/cache/apk/*
 
 ## Commands
